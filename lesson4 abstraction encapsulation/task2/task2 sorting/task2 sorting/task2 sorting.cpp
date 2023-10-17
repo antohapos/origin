@@ -17,7 +17,7 @@ public:
         this->apartment = apartment;
     }
     std::string get_full_address(){
-        return city + " " + street + " " + std::to_string(building) + " " + std::to_string(apartment);
+        return city + ", " + street + ", " + std::to_string(building) + ", " + std::to_string(apartment);
 
     } 
     std::string get_city() { return city; }
