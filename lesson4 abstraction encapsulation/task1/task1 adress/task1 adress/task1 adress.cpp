@@ -3,14 +3,14 @@
 #include <iostream>
 #include <fstream>
 
-class Adress {
+class Address {
 private:
     std::string city;
     std::string street;
     int building;
     int apartment;
 public:
-    Adress(std::string city, std::string street, int building, int apartment)
+    Address(std::string city, std::string street, int building, int apartment)
     {
         this->city = city;
         this->street = street;
@@ -39,14 +39,14 @@ int main()
         int apartment;
         in >> size;
         out << size << std::endl;
-        Adress** arr = new Adress * [size];
+        Address** arr = new Address * [size];
 
         for (int n = 0; n < size; n++) {
             in >> city;
             in >> street;
             in >> building;
             in >> apartment;
-            arr[n] = new Adress(city, street, building, apartment);
+            arr[n] = new Address(city, street, building, apartment);
         };
 
         for (int n = size - 1; n >= 0; n--) {
