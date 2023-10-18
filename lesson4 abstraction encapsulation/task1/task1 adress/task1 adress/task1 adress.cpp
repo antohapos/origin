@@ -52,6 +52,9 @@ int main()
         for (int n = size - 1; n >= 0; n--) {
             out << arr[n]->get_city() << ", " << arr[n]->get_street() << ", " << arr[n]->get_building() << ", " << arr[n]->get_apartment() << std::endl;
         }
+
+        for (int n = 0; n < size; n++) {delete arr[n];}
+
         delete[] arr;
         in.close();
         out.close();
