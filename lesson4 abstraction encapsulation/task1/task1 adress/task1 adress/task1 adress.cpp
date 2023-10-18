@@ -40,7 +40,6 @@ int main()
         in >> size;
         out << size << std::endl;
         Address** arr = new Address * [size];
-
         for (int n = 0; n < size; n++) {
             in >> city;
             in >> street;
@@ -48,13 +47,10 @@ int main()
             in >> apartment;
             arr[n] = new Address(city, street, building, apartment);
         };
-
         for (int n = size - 1; n >= 0; n--) {
             out << arr[n]->get_city() << ", " << arr[n]->get_street() << ", " << arr[n]->get_building() << ", " << arr[n]->get_apartment() << std::endl;
+            delete arr[n];
         }
-
-        for (int n = 0; n < size; n++) {delete arr[n];}
-
         delete[] arr;
         in.close();
         out.close();

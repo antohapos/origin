@@ -47,10 +47,13 @@ int main(){
         };
         for (int j = 0; j < size - 1 ; j++){
             for (int i = 0; i < size - 1; i++) {
-                if (arr[i]->get_city()[0] < arr[i + 1]->get_city()[0]) {std::swap(arr[i], arr[i + 1]);}
+                if (arr[i]->get_city()[0] > arr[i + 1]->get_city()[0]) {std::swap(arr[i], arr[i + 1]);}
             }
         }
-        for (int n = size - 1; n >= 0; n--) {out << arr[n]->get_full_address() << std::endl;}
+        for (int n = 0; n < size; n++) {
+            out << arr[n]->get_full_address() << std::endl;
+            delete arr[n];
+        }
         delete[] arr;
         in.close();
         out.close();
