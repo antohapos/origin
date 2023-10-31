@@ -30,7 +30,7 @@ class Quadrangle: public Figure
 public:
     Quadrangle(){
         sides_count = 4;
-        name = "Квадрат";
+        name = "Четырехугольник";
     }
 };
 int main()
