@@ -3,11 +3,12 @@
 class Figure
 {
 protected:
-
     std::string name;
-    
     Figure() {
     }
+    std::string get_name() { return name; }
+public:
+    virtual void get_parameters(){}
 };
 class Triangle : public Figure
 {
@@ -20,8 +21,8 @@ protected:
          int B;
          int C;
          int D;
-         void get_triangle_parameters() {
-             std::cout << name << std::endl;
+         void get_parameters() override {
+             std::cout << get_name() << std::endl;
              std::cout << "Стороны: " << "a=" << a << "  b=" << b << "  c=" << c << std::endl;
              std::cout << "Углы: " << "A=" << A << "  B=" << B << "  C=" << C << std::endl << std::endl;
          }
@@ -35,7 +36,6 @@ public:
         this->A = A;
         this->B = B;
         this->C = C;
-        get_triangle_parameters();
     }
 };
 class Right_triangle : public Triangle
@@ -49,7 +49,6 @@ public:
         this->A = A;
         this->B = B;
         C = 90;
-        get_triangle_parameters();
     }
 };
 class Isosceles_triangle : public Triangle
@@ -63,7 +62,6 @@ public:
         this->C = C;
         b = a;
         A = B = (180 - C) / 2;
-        get_triangle_parameters();
     }
 };
 
@@ -75,7 +73,6 @@ public:
         this->a = a;
         b = c = a;
         A = B = C = 60;
-        get_triangle_parameters();
     }
 };
 
@@ -102,10 +99,9 @@ public:
          this->B = B;
          this->C = C;
          this->D = D;
-         get_qudrangle_parametrs();
     }
-    void get_qudrangle_parametrs() {
-        std::cout << name << std::endl;
+    void get_parameters() override {
+        std::cout << get_name() << std::endl;
         std::cout << "Стороны: " << "a=" << a << "  b=" << b << "  c=" << c << "  d=" << d << std::endl;
         std::cout << "Углы: " << "A=" << A << "  B=" << B << "  C=" << C << "  D=" << D << std::endl << std::endl;
     }
@@ -119,7 +115,6 @@ public:
         this->b = d = b;
         A = B = C = D = 90;
         name = "Прямоугольник";
-        get_qudrangle_parametrs();
     }
 };
 class Square : public Quadrangle
@@ -129,7 +124,6 @@ public:
         this->a = c = b = d = a;
         A = B = C = D = 90;
         name = "Квадрат";
-        get_qudrangle_parametrs();
     }
 };
 class Parallelogram : public Quadrangle
@@ -141,7 +135,6 @@ public:
         this->A = C = A;
         B = D = 180 - A;
         name = "Параллелограм";
-        get_qudrangle_parametrs();
     }
 };
 class Rhombus : public Quadrangle
@@ -152,20 +145,31 @@ public:
         this->A = C = A;
         B = D = 180 - A;
         name = "Ромб";
-        get_qudrangle_parametrs();
     }
 };
+void print_info(Figure &f) {
+    f.get_parameters();
+}
 
     int main()
     {
         system("chcp 1251");
         Triangle T(10, 5, 15, 60, 40, 80);
+        print_info(T);
         Right_triangle R(5, 10, 15, 30, 60);
+        print_info(R);
         Isosceles_triangle I(10, 15, 80);
+        print_info(I);
         Equilateral_triangle E(10);
+        print_info(E);
         Quadrangle Q(5, 10, 15, 5, 110, 30, 130, 90);
+        print_info(Q);
         Rectangle Re(10, 15);
+        print_info(Re);
         Square S(10);
+        print_info(S);
         Parallelogram P(10, 15, 40);
-        Rhombus RH(15, 60);
+        print_info(P);
+        Rhombus Rh(15, 60);
+        print_info(Rh);
     }

@@ -9,13 +9,11 @@ protected:
     int get_sides_count() {}
     std::string name;
 public:
-    void get_name() { std::cout << name <<" " << sides_count<< std::endl; }
+    std::string get_name() { return name; }
     Figure() { 
         sides_count = 0;
         name = "Фигура";
     }
-
-
 };
 class Triangle : public Figure
 {
@@ -37,9 +35,9 @@ int main()
 {
     system("chcp 1251");
     Figure F;
-    F.get_name();
+    std::cout << F.get_name() << std::endl;
     Triangle T;
-    T.get_name();
+    std::cout << T.get_name() << std::endl;
     Quadrangle Q;
-    Q.get_name();
+    std::cout << Q.get_name() << std::endl;
 }
