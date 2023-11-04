@@ -141,7 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="class_Equilateral_triangle.h" />
-    <ClInclude Include="class_figure.h" />
+    <ClInclude Include="class_Figure.h" />
     <ClInclude Include="class_Isosceles_triangle.h" />
     <ClInclude Include="class_Parallelogram.h" />
     <ClInclude Include="class_Quadrangle.h" />
