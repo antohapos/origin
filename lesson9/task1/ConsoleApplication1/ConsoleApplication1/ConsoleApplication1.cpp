@@ -12,19 +12,28 @@ public:
         numerator_ = numerator;
         denominator_ = denominator;
     }
-    double Abs() const { return static_cast<double>(numerator_) / denominator_; }
-    bool operator<(const Fraction& other) { return Abs() < other.Abs(); }
-    bool operator>(const Fraction& other) { return !(*this < other); }
-    bool operator==(const Fraction& other) { return Abs() == other.Abs(); }
-    bool operator!=(const Fraction& other) { return !(*this == other); }
-    bool operator<=(const Fraction& other) { return !(*this > other); }
-    bool operator>=(const Fraction& other) { return !(*this < other); }
+    friend void converting(Fraction& f1, Fraction& f2) {
+        int a = f1.numerator_;
+        int b = f1.denominator_;
+        int c = f2.numerator_;
+        int d = f2.denominator_;
+        f1 = Fraction(a * d, b * d);
+        f2 = Fraction(c * b, d * b);
+    }
+
+    bool operator<(const Fraction& other) { return (numerator_ < other.numerator_); }
+    bool operator>(const Fraction& other) { return !(numerator_ < other.numerator_); }
+    bool operator==(const Fraction& other) { return (numerator_ == other.numerator_); }
+    bool operator!=(const Fraction& other) { return !(numerator_ == other.numerator_); }
+    bool operator<=(const Fraction& other) { return !(numerator_ > other.numerator_); }
+    bool operator>=(const Fraction& other) { return !(numerator_ < other.numerator_); }
 };
 
 int main()
 {
-    Fraction f1(4, 3);
+    Fraction f1(5, 3);
     Fraction f2(6, 11);
+    converting(f1, f2);
 
     std::cout << "f1" << ((f1 == f2) ? " == " : " not == ") << "f2" << '\n';
     std::cout << "f1" << ((f1 != f2) ? " != " : " not != ") << "f2" << '\n';
