@@ -38,6 +38,4 @@ int main()
     print_info(p_quadrangle);
     Rhombus rh_quadrangle(30, 30, 30, 30, 30, 40, 30, 40);
     print_info(rh_quadrangle);
-    system("pause");
-    return 0;
-}
+};

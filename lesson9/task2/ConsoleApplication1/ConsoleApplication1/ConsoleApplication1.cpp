@@ -75,7 +75,7 @@ int main() {
     std::cout << f1 << " - " << f2 << " = " << f1 - f2 << std::endl;
     std::cout << f1 << " * " << f2 << " = " << f1 * f2 << std::endl;
     std::cout << f1 << " / " << f2 << " = " << f1 / f2 << std::endl;
-    std::cout << "++" << f1 << " * " << f2 << " = "; std::cout << ++f1 * f2 << std::endl;
+    std::cout << "++" << f1 << " * " << f2 << " = " << ++f1 * f2 << std::endl;
     std::cout << "Значение дроби 1 = " << f1 << std::endl;
     std::cout << f1 << "--" << " * " << f2 << " = "; std::cout << f1-- * f2 << std::endl;
     std::cout << "Значение дроби 1 = " << f1 << std::endl;

@@ -1,15 +1,4 @@
 cmake_minimum_required(VERSION 3.22.0)
-project(cmake_more_complex_project)
-add_executable(more_complex_project Triangles.cpp)
-include_directories(more_complex_project class_Equilateral_triangle.cpp)
-include_directories(more_complex_project class_Figure.cpp)
-include_directories(more_complex_project class_Isosceles_triangle.cpp)
-include_directories(more_complex_project class_Parallelogram.cpp)
-include_directories(more_complex_project class_Quadrangle.cpp)
-include_directories(more_complex_project class_Rectangle.cpp)
-include_directories(more_complex_project class_Rhombus.cpp)
-include_directories(more_complex_project class_Right_triangle.cpp)
-include_directories(more_complex_project class_Square.cpp)
-include_directories(more_complex_project class_Triangle.cpp)
-
+project(more_complex_project)
+add_executable(test lesson6_task3.cpp class_Triangle.cpp class_Right_triangle.cpp class_Isosceles_triangle.cpp class_Equilateral_triangle.cpp class_Quadrangle.cpp class_Rectangle.cpp class_Square.cpp class_Parallelogram.cpp class_Rhombus.cpp) 
 
