@@ -7,5 +7,4 @@ namespace GreeterLib
 		greeting.insert(14, name);
 		return greeting;
 	}
-}
-;
+};
