@@ -2,22 +2,31 @@
 
 class smart_array {
     int* arr;
-    int n;
+    int size;
+    int count;
 public:
     smart_array(int size) {
-        arr = new int[size];
-        n = 0;
+        this->size = size;
+        arr = new int[size] {};
+        count = 0;
     }
     void add_element(int a) {
-        arr[n] = a;
-        n++;
+        if (count >= size) { throw std::exception("Выход за пределы массива ");}
+        arr[count] = a;
+        count++;
     };
-    int get_element(int i) { return arr[i]; }
-    ~smart_array() { delete arr; }
+    int get_element(int i) {
+        return arr[i];
+    }
+    ~smart_array() {
+        //std::cout << "delete arr";
+        delete arr; 
+    }
 };
 int main() {
+    
     try {
-        smart_array arr(5);
+        smart_array arr(4);
         arr.add_element(1);
         arr.add_element(4);
         arr.add_element(155);
@@ -28,4 +37,5 @@ int main() {
     catch (const std::exception& ex) {
         std::cout << ex.what() << std::endl;
     }
+    
 }
