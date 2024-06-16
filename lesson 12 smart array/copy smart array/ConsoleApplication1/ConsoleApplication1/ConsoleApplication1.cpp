@@ -1,5 +1,4 @@
-﻿
-#include <iostream>
+﻿#include <iostream>
 
 class smart_array {
     int* arr;
@@ -11,39 +10,45 @@ public:
         arr = new int[size] {};
         count = 0;
     }
-    void add_element(int a) {
-        if (count >= size) { throw std::exception("Выход за пределы массива "); }
-        arr[count] = a;
-        count++;
-    };
-    int get_element(int i) {
-        return arr[i];
-    }
-    void new_arr(smart_array &copyed_arr) {
-        delete arr;
-        arr = nullptr;
-        size = copyed_arr.get_size();
-        count = 0;
-        arr = new int[size] {};
-        for (int i = 0; i < size; i++) {
-            arr[i] = copyed_arr.get_element(i);
+
+    void add_element(int value) {
+        if (size == count) {
+            throw std::out_of_range("выход за пределы массива при добавлении");
         }
+        arr[count] = value;
+        count++;
     }
-    int get_size() {
-        return size;
+
+    smart_array& operator=(const smart_array& other) {
+       // std::cout << "перегрузка оператора = " ;
+        if (this != &other) {
+            delete[] arr;
+            count = other.count;
+            size = other.size;
+            arr = new int[count];
+            for (int i = 0; i < count; ++i) {
+                arr[i] = other.arr[i];
+            }
+        }
+        return *this;
     }
+
     ~smart_array() {
-        std::cout << "delete arr" << std::endl;
-        delete arr;
-        std::cout << "delete arr" << std::endl;
+        delete[] arr;
+    }
+
+    void print() {
+        for (int i = 0; i < count ; ++i) {
+            std::cout << arr[i]<< " ";
+        }
+        std::cout << std::endl;
     }
 };
- 
-int main()
-{
-    setlocale(LC_ALL, "Russian");
+
+int main() {
+    system("chcp 1251");
     try {
-        smart_array arr(3);
+        smart_array arr(5);
         arr.add_element(1);
         arr.add_element(4);
         arr.add_element(155);
@@ -51,23 +56,21 @@ int main()
         smart_array new_array(2);
         new_array.add_element(44);
         new_array.add_element(34);
-        std::cout << arr.get_size() << std::endl;
-        for (int i = 0; i < arr.get_size(); i++) {
-            std::cout << arr.get_element(i) << "\t";
-        }
-        std::cout << std::endl;
-        arr.new_arr(new_array);
-        std::cout << arr.get_size() << std::endl;
-        for (int i = 0; i < arr.get_size(); i++) {
-            std::cout << arr.get_element(i) << "\t";
-        }
-        std::cout << std::endl;
-        arr.add_element(1);
-        arr.add_element(4);
- 
+
+        std::cout << "массив до копирования: ";
+        arr.print();
+
+        arr = new_array; // копирование массива
+
+        std::cout << "массив после копирования: ";
+        arr.print();
+
+        std::cout << "массив который копировали: ";
+        new_array.print();
+
+        return 0;
     }
     catch (const std::exception& ex) {
         std::cout << ex.what() << std::endl;
     }
-    
 }
