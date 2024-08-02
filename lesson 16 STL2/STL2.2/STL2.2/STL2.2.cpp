@@ -5,11 +5,6 @@
 
 template <typename T>
 void print_container(const T& container) {
-    if (container.empty()) {
-        std::cout << "Container is empty!" << std::endl;
-        return;
-    }
-
     typename T::const_iterator it = container.begin();
     for (const auto& element : container) {
         std::cout << element;

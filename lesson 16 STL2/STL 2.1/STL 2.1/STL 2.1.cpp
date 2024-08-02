@@ -1,20 +1,24 @@
 ﻿#include <iostream>
 #include <vector>
-#include <set>
 #include <algorithm>
-int main() {
-    int count;
-    std::cin >> count;
-    std::vector<int> numbers(count);
-    std::copy(std::istream_iterator<int>(std::cin),
-        std::istream_iterator<int>(),
-        numbers.begin());
-    std::cout << std::endl;
-    std::set<int> noDupNumbers(numbers.begin(), numbers.end());
-    std::vector<int> sortedNoDupNumbers(noDupNumbers.begin(), noDupNumbers.end());
-    std::sort(sortedNoDupNumbers.begin(), sortedNoDupNumbers.end(), std::greater<int>());
-    for (int number : sortedNoDupNumbers) {
-        std::cout << number << std::endl;
+
+void print(const std::vector<int>& v) {
+    for (int i : v) {
+        if (i != v.back()) std::cout << i << " ";
+        else std::cout << i << std::endl;
     }
-    return 0;
+}
+
+void sortingFoo(std::vector<int>& v) {
+    std::sort(v.begin(), v.end());
+    std::vector<int>::iterator it = std::unique(v.begin(), v.end());
+    v.resize(std::distance(v.begin(), it));
+    
+}
+
+int main() {
+    std::vector<int> v = { 1, 1, 2, 5, 6, 1, 2, 4 };
+    print(v);
+    sortingFoo(v);
+    print(v);
 }
